@@ -17,20 +17,37 @@ fun main(args: Array<String>) {
 
     feedTheFish()
     swim()
+    var bubbles = 0
+    while (bubbles < 50) {
+        bubbles++
+    }
+    repeat(2) {
+        println("The fish is swimming")
+    }
+
+//    val noValue = for (x in 1..10){ }
+//    val notThisEither = while (false) { }
+}
+fun getDirtySensorReading() =20
+
+fun makeNewAquarium() = println("Building a new aquarium..")
+
+fun aquariumStatusReport(aquarium : Any = makeNewAquarium()){
+
 }
 
 fun shouldChangeWater(
     day: String,
     temperature: Int = 22,
-    dirty: Int = 20,
+    dirty: Int = getDirtySensorReading(),
 ): Boolean {
     val isTooHot = temperature > 30
     val isDirty = dirty > 30
     val isSunday = day == "Sunday"
     return when {
-        isTooHot -> true
-        isDirty -> true
-        isSunday -> true
+        isTooHot(temperature) -> true
+        isDirty(dirty) -> true
+        isSunday(day) -> true
         else -> false
     }
 
