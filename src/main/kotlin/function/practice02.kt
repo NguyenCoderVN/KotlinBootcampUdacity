@@ -35,7 +35,7 @@ fun getFortuneCookie(): String {
         "Treasure your friends because they are your greatest fortune."
     )
     print("Enter your birthday: ")
-    val birthday = readLine()?.toIntOrNull() ?: 1
+    val birthday = readlnOrNull()?.toIntOrNull() ?: 1
     val index = birthday % fortunes.size
     return fortunes[index]
 }
