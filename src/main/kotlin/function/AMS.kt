@@ -27,12 +27,20 @@ fun main(args: Array<String>) {
 
 //    val noValue = for (x in 1..10){ }
 //    val notThisEither = while (false) { }
+
+    val decoration = listOf("rock", "pagoda", "plastic plan", "alligator", "flowerpot")
+    println(decoration.filter { true })
+    println(decoration.filter { it[0] == 'p' })
+
+    eagerExample()
 }
-fun getDirtySensorReading() =20
+
+
+fun getDirtySensorReading() = 20
 
 fun makeNewAquarium() = println("Building a new aquarium..")
 
-fun aquariumStatusReport(aquarium : Any = makeNewAquarium()){
+fun aquariumStatusReport(aquarium: Any = makeNewAquarium()) {
 
 }
 
@@ -56,6 +64,37 @@ fun shouldChangeWater(
 fun isTooHot(temperature: Int): Boolean = temperature > 30
 fun isDirty(dirty: Int): Boolean = dirty > 30
 fun isSunday(day: String): Boolean = day == "Sunday"
+
+fun eagerExample() {
+    val decoration = listOf("rock", "pagoda", "plastic plan", "alligator", "flowerpot")
+    val eager = decoration.filter { it[0] == 'p' }
+    println(eager)
+    // apply filter lazy
+    val eagerLazy = decoration.asSequence().filter { it[0] == 'p' }
+    println(eagerLazy)
+    println(eagerLazy.toList())
+    // apply map lazy
+    val lazyMap = decoration.asSequence().map {
+        println("map $it ")
+        it
+    }
+    println(lazyMap)
+    println("First ${lazyMap.first()}")
+    println("All ${lazyMap.toList()}")
+    val spices =
+        listOf("curry", "curryaadadad", "pepper", "cayenne", "ginger", "red curry", "green curry", "red pepper")
+    val spices01 = spices.filter { it.contains("curry") }.sortedBy { it.length }
+    println(spices01)
+//    val spices02 = spices.filter { it.startsWith('c') && it.endsWith('e') }
+    val spices02 = spices
+        .filter { it.startsWith('c') }
+        .filter { it.endsWith('e') }
+
+    println(spices02)
+    val spices03 = spices.take(3).filter { it.startsWith('c') }
+    println(spices03)
+
+}
 
 fun feedTheFish() {
     val day = randomDay()
