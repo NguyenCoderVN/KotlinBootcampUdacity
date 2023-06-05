@@ -16,7 +16,7 @@ class Book1(private val title: String, val author: String, val year: Int) {
     }
 
     fun printUrl() {
-        println("${Constants.BASE_URL}${title}.html")
+        println("${BASE_URL}${title}.html")
     }
 }
 
